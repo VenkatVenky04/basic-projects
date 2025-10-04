@@ -6,8 +6,7 @@
     "start": "ng serve -o --port 4300",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-     "deploy": "ng build --configuration production --base-href \"https://venkatvenky04.github.io/basic-projects/\" && npx angular-cli-ghpages --dir=dist/basic-projects"
+    "test": "ng test"
   },
   "prettier": {
     "printWidth": 100,
