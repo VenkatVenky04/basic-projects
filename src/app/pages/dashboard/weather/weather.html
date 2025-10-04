@@ -1,0 +1,78 @@
+<div class="container text-center mt-4">
+    <h2 class="mb-4">Weather App Report</h2>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-4">
+            <input type="text" class="form-control" [(ngModel)]="city" placeholder="Enter city name">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100" (click)="searchCityWeather()">Search</button>
+        </div>
+    </div>
+
+    @if (loading) {
+        <p>Loading Weather data...</p>
+    } @else if (error) {
+        <p class="text-danger">{{error}}</p>
+    } @else {
+        <div class="card p-3 shadow col-md-4 mx-auto">
+            <h4>Current Weather</h4>
+            <p><strong>Temparature: </strong>{{weatherData.temperature}} °C</p>
+            <p><strong>Wind: </strong>{{weatherData.windspeed}} km/h</p>
+            <p><strong>Direction: </strong>{{weatherData.winddirection}}°</p>
+            <p><strong>Time: </strong>{{weatherData.time | date:'shortTime'}}</p>
+            <!-- 'HH:mm' → 11:30 (24-hour)
+            'hh:mm a' → 11:30 AM (12-hour with AM/PM) -->
+        </div>
+
+         <!-- Hourly Forecast -->
+    <div class="card shadow p-3 col-md-8 mx-auto my-4">
+      <h5>Next 24 Hours Forecast</h5>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Temp (°C)</th>
+            <th>Wind (km/h)</th>
+            <th>Precipitation (mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (h of hourly; track h.time) {
+            <tr>
+              <td>{{ h.time }}</td>
+              <td>{{ h.temperature }}</td>
+              <td>{{ h.wind }}</td>
+              <td>{{ h.precipitation }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Daily Forecast -->
+    <div class="card shadow p-3 col-md-6 mx-auto mb-4">
+      <h5>7-Day Forecast</h5>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Max Temp (°C)</th>
+            <th>Min Temp (°C)</th>
+            <th>Precipitation (mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (d of daily; track d.date) {
+            <tr>
+              <td>{{ d.date }}</td>
+              <td>{{ d.tempMax }}</td>
+              <td>{{ d.tempMin }}</td>
+              <td>{{ d.precipitation }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    }
+</div>

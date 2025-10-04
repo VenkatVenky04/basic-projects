@@ -1,0 +1,33 @@
+<div class="calculator">
+    <input type="text" [value]="display" readonly>
+
+    <div class="buttons">
+        <button (click)="clear()">C</button>
+        <button (click)="deletedata()">⌫</button>
+        <button (click)="append('/')">÷</button>
+        <button (click)="append('*')">×</button>
+
+        <button (click)="square()">x²</button>
+        <button (click)="sqrt()">√</button>
+        <button (click)="memoryStore()">M+</button>
+        <button (click)="memoryRecall()">MR</button>
+
+        <button (click)="append('7')">7</button>
+        <button (click)="append('8')">8</button>
+        <button (click)="append('9')">9</button>
+        <button (click)="append('+')">+</button>
+
+        <button (click)="append('4')">4</button>
+        <button (click)="append('5')">5</button>
+        <button (click)="append('6')">6</button>
+        <button (click)="append('-')">-</button>
+
+        <button (click)="append('1')">1</button>
+        <button (click)="append('2')">2</button>
+        <button (click)="append('3')">3</button>
+        <button (click)="append('0')">0</button>
+
+        <button class="equal" (click)="equal()">=</button>
+        <button (click)="append('.')">.</button>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.card {
+  border-radius: 12px;
+}
+.card h5 {
+  font-weight: bold;
+  color: #28a745;
+}
+input {
+  text-align: center;
+  font-size: 1.1rem;
+}

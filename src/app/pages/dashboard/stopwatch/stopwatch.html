@@ -1,0 +1,17 @@
+<div class="stopwatch">
+    <h2>{{formattime(time)}}</h2>
+    <div class="controls">
+        <button (click)="start()">Start</button>
+        <button (click)="stop()">Stop</button>
+        <Button (click)="reset()">Reset</Button>
+        <button (click)="lap()">Lap</button>
+    </div>
+
+    <ul class="laps">
+        @for(lap of laps; track $index) {
+            <li>
+                Lap {{$index + 1}}: {{lap}}
+            </li>
+        }
+    </ul>
+</div>
