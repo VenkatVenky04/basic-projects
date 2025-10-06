@@ -9,6 +9,9 @@
 
     <button (click)="calculateBMI()" class="btn btn-primary">Calculate BMI</button>
     <button (click)="reset()" class="btn btn-secondary">Reset</button>
+    @if(message && !weight && !height) {
+    <p class="warn-result"><i>{{ message }}</i></p>
+    }
     @if(bmi) {
     <div>
         <h3>Your BMI Is <span [ngClass]="bmiClass()">{{ bmi | number: '1.1-2'}}</span></h3>

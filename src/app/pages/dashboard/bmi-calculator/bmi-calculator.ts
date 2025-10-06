@@ -18,7 +18,8 @@ export class BmiCalculator {
     const weight = parseFloat(this.weight);
     const height = parseFloat(this.height);
 
-    if (!weight && !height) {
+    if (!this.weight && !this.height) {
+      console.log("weight", weight, "height", height)
       this.message = 'Please enter Weight & Height';
       this.bmi = null;
       return;
