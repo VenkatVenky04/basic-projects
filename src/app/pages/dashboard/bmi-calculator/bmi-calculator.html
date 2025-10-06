@@ -10,7 +10,7 @@
     <button (click)="calculateBMI()" class="btn btn-primary">Calculate BMI</button>
     <button (click)="reset()" class="btn btn-secondary">Reset</button>
     @if(message && !weight && !height) {
-    <p class="warn-result"><i>{{ message }}</i></p>
+    <p class="warn-result">{{ message }}</p>
     }
     @if(bmi) {
     <div>

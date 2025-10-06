@@ -28,6 +28,7 @@ button {
 .warn-result {
     font-size: 20px;
     color: red;
+    padding-top: 16px;
 }
 
 .warning {
