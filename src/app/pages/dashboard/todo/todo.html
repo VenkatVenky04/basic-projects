@@ -1,1 +1,19 @@
-<p>I am Working on it, todo works soon..</p>
+<div class="container">
+    <h1>📝 To-Do List</h1>
+
+    <div class="input-section">
+        <input type="text" placeholder="Enter A Task" [(ngModel)]="task" (keyup.enter)="addTask()">
+        <button (click)="addTask()">Add</button>
+    </div>
+    <div class="hint-message">
+        {{this.message}}
+    </div>
+    <ul>
+        @for(item of tasks; track item; let i = $index) {
+        <li>
+            <span [class.completed]="item.completed" (click)="toggleTask(i)">{{ item.text }}</span>
+            <button (click)="deleteTask(i)">Delete ❌</button>
+        </li>
+        }
+    </ul>
+</div>

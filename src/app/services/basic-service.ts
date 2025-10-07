@@ -8,6 +8,9 @@ import { Observable, map, switchMap } from 'rxjs';
 export class BasicService {
   private weatherApi = 'https://api.open-meteo.com/v1/forecast';
   private geocodeApi = 'https://nominatim.openstreetmap.org/search';
+  private apiDictionaryUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+  private suggestionApi = 'https://api.datamuse.com/sug?s=';
+
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +33,14 @@ export class BasicService {
     return this.getCoordinates(city).pipe(
       switchMap(({ lat, lon }) => this.getWeather(lat, lon))
     );
+  }
+
+  searchWord(word: string): Observable<any> {
+    return this.http.get(`${this.apiDictionaryUrl}${word}`)
+  }
+
+  suggestionWords(relatedWords: string): Observable<any> {
+    return this.http.get(`${this.suggestionApi}${relatedWords}`)
   }
 
 }

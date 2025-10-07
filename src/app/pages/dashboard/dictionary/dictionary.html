@@ -1,1 +1,74 @@
-<p>I am Working on it, dictionary works soon..</p>
+<div class="container">
+    <h1>📖 Dictionary App</h1>
+
+    <div class="search-section">
+        <input type="text" placeholder="Enter a Word..." [(ngModel)]="word" (keyup.enter)="searchWord()"
+            (input)="onInputChange()">
+        <button (click)="searchWord()" style="margin-top: 0px;">Search</button>
+
+        @if(suggestions.length > 0) {
+        <ul class="suggestions">
+            @for(sug of suggestions; track sug;) {
+            <li (click)="selectSuggestions(sug.word)">{{sug.word}}</li>
+            }
+        </ul>
+        }
+    </div>
+
+    @if(loading) {
+    <p class="loading">Loading...</p>
+    }
+    @if(error) {
+    <p class="error">❌ {{error}}</p>
+    }
+
+    @if(meaning) {
+    <div class="result">
+        <h2>{{meaning?.word}}</h2>
+
+        @if(meaning.phonetics?.length) {
+        <p><b>Phonetic:</b>{{meaning.phonetics[0]?.text}}</p>
+        }
+
+        @for(m of meaning.meanings; track m;) {
+        <div>
+            <h3>Parts of Speech: {{m.partOfSpeech}}</h3>
+
+            <ul>
+                @for (def of m.definitions; track $index) {
+                @if(def.definition || def.example || def.synonyms?.length || def.antonyms?.length) {
+                <li>
+                    @if(def.definition) {
+                    {{ def.definition }}
+                    }
+
+                    @if(def.example) {
+                    <p class="example">💬 {{ def.example }}</p>
+                    }
+
+                    @if(def.synonyms?.length) {
+                    <p><b>Synonyms: </b>{{ def.synonyms.join(', ') }}</p>
+                    }
+
+                    @if(def.antonyms?.length) {
+                    <p><b>Antonyms: </b> {{ def.antonyms.join(', ')}}</p>
+                    }
+                </li>
+                }
+                }
+            </ul>
+
+        </div>
+        }
+
+        @if(meaning.meanings?.length) {
+        <h3>Meaning</h3>
+        <ul>
+            @for(defination of meaning.meanings[0].definitions; track defination) {
+            <li>{{defination?.definition}}</li>
+            }
+        </ul>
+        }
+    </div>
+    }
+</div>

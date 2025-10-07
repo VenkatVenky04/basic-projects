@@ -12,23 +12,13 @@
   <div class="card shadow p-3 col-md-6 mx-auto">
     <h5 class="mb-3">Table of {{ number }}</h5>
     <ul class="list-group">
-      @for (i of range; track i) {
-        <li class="list-group-item">
-          {{ number }} × {{ i }} = {{ number * i }}
-        </li>
+      @if(this.number !== null && this.number !== undefined) {
+        @for (i of range; track i) {
+          <li class="list-group-item">
+            {{ number }} × {{ i }} = {{ number * i }}
+          </li>
+        }
       }
     </ul>
   </div>
-    <!-- <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let num of numbers">
-            <div class="card shadow p-3">
-                <h5 class="text-center">Table of {{ num }}</h5>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let i of numbers">
-            {{ num }} × {{ i }} = {{ num * i }}
-          </li>
-        </ul>
-            </div>
-        </div>
-    </div> -->
 </div>
