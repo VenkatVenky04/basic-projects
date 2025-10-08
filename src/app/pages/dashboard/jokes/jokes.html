@@ -1,1 +1,31 @@
-<p>I am Working on it, jokes will come soon..</p>
+<div class="joke-container">
+    <h1>🎭 Random Joke Generator</h1>
+
+    <div class="language-select">
+        <div>
+            <label>Select Language: </label>
+            <select [(ngModel)]="language">
+            @for(lang of languages; track lang;) {
+                <option [value]="lang.code">
+                    {{ lang.name }}
+                </option>
+            }
+            </select>
+        </div>
+        <div>
+            <label>Select Category: </label>
+            <select [(ngModel)]="category">
+                @for(cat of categories; track cat) {
+                    <option [value]="cat.code">
+                        {{cat.name}}
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <button (click)="getJoke()" [disabled]="loading">{{ loading ? 'Loading..' : 'Get Random Joke..'}}</button>
+
+    @if(joke) {
+        <p class="mt-2">{{joke}}</p>
+    }
+</div>

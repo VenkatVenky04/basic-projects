@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,25 @@ export class BasicService {
 
   suggestionWords(relatedWords: string): Observable<any> {
     return this.http.get(`${this.suggestionApi}${relatedWords}`)
+  }
+
+  getRandomJokes(language: string = 'en', category: string = 'Any'): Observable<string> {
+    const jokeApiUrl = `https://v2.jokeapi.dev/joke/${category}?lang=en`;
+
+    return this.http.get<any>(jokeApiUrl).pipe(
+      map(res => res.joke || `${res.setup} - ${res.delivery}`),
+      switchMap((jokeText) => {
+        if (language === 'en') return of(jokeText);
+
+        const translateUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+          jokeText
+        )}&langpair=en|${language}`;
+
+        return this.http.get<any>(translateUrl).pipe(
+          map(t => t.responseData.translatedText || jokeText)
+        );
+      })
+    );
   }
 
 }

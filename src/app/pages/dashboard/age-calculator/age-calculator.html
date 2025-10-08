@@ -1,1 +1,12 @@
-<p>I am Working on it, age-calculator works soon..</p>
+<div class="container">
+    <h1>🧮 Age Calculator</h1>
+
+    <label for="dob">Enter Your Date Of Birth:</label>
+    <input type="date" id="dob" [(ngModel)]="enterDate">
+    <button (click)="calculate()">Calculate Age</button>
+
+    @if(ageResult) {
+        <p class="mt-3 mb-1 text-show">Your Age Is: </p>
+        <p class="result">{{ageResult}}</p>
+    }
+</div>

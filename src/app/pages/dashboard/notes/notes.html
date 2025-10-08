@@ -1,1 +1,18 @@
-<p>I am Working on it, notes will works soon..</p>
+<div class="notes-container">
+    <h1>📝 My Notes</h1>
+
+    <div class="text-part">
+    <textarea [(ngModel)]="text" placeholder="Enter your note here..." (keyup.enter)="isEditing ? updateNote() : addNote()"></textarea>
+    <button (click)="isEditing ? updateNote() : addNote()">{{isEditing ? 'Update Now' : 'Add Note'}}</button>
+    </div>
+
+    <ul class="mt-3">
+        @for(n of notes; track n; let i = $index) {
+            <li>
+                {{n}}
+                <button (click)="editNote(i)">✏️</button>
+                <button (click)="deleteNote(i)">❌</button>
+            </li>
+        }
+    </ul>
+</div>

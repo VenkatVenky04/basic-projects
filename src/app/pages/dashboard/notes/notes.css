@@ -1,0 +1,38 @@
+.notes-container {
+  margin: 20px auto;
+  text-align: center;
+}
+
+textarea {
+  width: 400px;
+  height: 80px;
+  margin-bottom: 10px;
+  padding: 8px;
+  resize: none;
+}
+
+button {
+  margin: 5px;
+  padding: 6px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.text-part {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
