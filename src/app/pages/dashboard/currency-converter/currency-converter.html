@@ -1,1 +1,34 @@
-<p>I am Working on it, currency-converter works soon..</p>
+<div class="converter-container">
+    <h1>💱 Currency Converter</h1>
+
+    <div class="form-group pt-3">
+        <label>Enter Amount: </label>
+        <input type="number" [(ngModel)]="enterAmount" placeholder="Enter Amount..">
+    </div>
+
+    <div class="form-group">
+        <label for="">From Currency: </label>
+        <select [(ngModel)]="fromCurrency">
+            @for(cur of currencies; track cur) {
+                <option [value]="cur">{{cur}}</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="">To Currency: </label>
+        <select [(ngModel)]="toCurrency">
+            @for(cur of currencies; track cur) {
+                <option [value]="cur">{{cur}}</option>
+            }
+        </select>
+    </div>
+
+    <button (click)="convertCurrency()">Convert</button>
+
+    <div class="result">
+        @if(result !== null) {
+            <p>{{enterAmount}} {{fromCurrency}} = <strong>{{result | number: '1.2-2'}} {{toCurrency}}</strong></p>
+        }
+    </div>
+</div>
