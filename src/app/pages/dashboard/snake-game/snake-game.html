@@ -5,3 +5,25 @@
 <div>Score: <span class="score">{{score}}</span></div>
 <div>🏆 High Score: <span class="score">{{highScore}}</span></div>
 </div>
+
+<!-- Mobile Controls -->
+<div class="mobile-controls">
+  <div class="control-row">
+    <button class="ctrl-btn" (click)="startGame()">▶</button>
+    <button class="ctrl-btn" (click)="togglePause()">⏸</button>
+    <button class="ctrl-btn" (click)="resetGame()">🔁</button>
+  </div>
+
+  <div class="arrow-controls">
+    <div class="arrow-row">
+      <button class="arrow-btn" (click)="setNextDirection(0, -1)">⬆</button>
+    </div>
+    <div class="arrow-row mbl_fix">
+      <button class="arrow-btn" (click)="setNextDirection(-1, 0)">⬅</button>
+      <button class="arrow-btn" (click)="setNextDirection(1, 0)">➡</button>
+    </div>
+    <div class="arrow-row">
+      <button class="arrow-btn" (click)="setNextDirection(0, 1)">⬇</button>
+    </div>
+  </div>
+</div>

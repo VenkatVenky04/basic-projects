@@ -45,7 +45,7 @@ export class SnakeGame {
     this.isStarted = false;
   }
 
-  private resetGame() {
+  resetGame() {
     this.snake = [
       { x: Math.floor(this.cols / 2), y: Math.floor(this.rows / 2) },
       { x: Math.floor(this.cols / 2) - 1, y: Math.floor(this.rows / 2) },
@@ -266,8 +266,21 @@ export class SnakeGame {
     }
   }
 
-  private setNextDirection(x: number, y: number) {
+  setNextDirection(x: number, y: number) {
     this.nextDirection = { x, y };
+  }
+
+  startGame() {
+    if (!this.isStarted) {
+      this.isStarted = true;
+      this.isRunning = true;
+    }
+  }
+
+  togglePause() {
+    if (this.isStarted && !this.isGameOver) {
+      this.isRunning = !this.isRunning;
+    }
   }
 
 }
